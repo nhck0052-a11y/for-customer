@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar: document.getElementById('progress-bar'),
         resultTitle: document.getElementById('result-title'), // New
         resultDescription: document.getElementById('result-description'), // New
-        resultImage: document.getElementById('result-image'), // New
     };
 
     let currentLanguage = 'kr';
@@ -127,10 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const resultImages = {
-        laidBack: 'https://via.placeholder.com/400x250/82b1ff/ffffff?text=Laid-Back+Style', // Placeholder image for Laid-Back
-        jealous: 'https://via.placeholder.com/400x250/ffb382/ffffff?text=Jealous+Style', // Placeholder image for Jealous
-    };
+
 
     const setLanguage = (lang) => {
         currentLanguage = lang;
@@ -208,35 +204,21 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const displayResult = () => {
-        console.log('displayResult called'); // Debugging
         let resultType = '';
         let resultTitleKey = '';
         let resultDescriptionKey = '';
-        let resultImageSrc = '';
 
         if (totalScore >= 0) { // Assuming 0 or positive score means jealous style
             resultType = 'jealous';
             resultTitleKey = 'resultJealousTitle';
             resultDescriptionKey = 'resultJealousDescription';
-            resultImageSrc = resultImages.jealous;
         } else { // Negative score means laid-back style
             resultType = 'laidBack';
             resultTitleKey = 'resultLaidBackTitle';
             resultDescriptionKey = 'resultLaidBackDescription';
-            resultImageSrc = resultImages.laidBack;
         }
 
-        console.log('Result Type:', resultType); // Debugging
-        console.log('Result Image Source:', resultImageSrc); // Debugging
-        console.log('Result Image Element:', elements.resultImage); // Debugging
-
-        elements.resultTitle.textContent = langData[currentLanguage][resultTitleKey];
-        elements.resultDescription.textContent = langData[currentLanguage][resultDescriptionKey];
-        elements.resultImage.src = resultImageSrc;
-        elements.resultImage.alt = langData[currentLanguage][resultTitleKey]; // Set alt text for accessibility
-
         showScreen('results');
-        console.log('Results screen shown.'); // Debugging
     };
 
 

@@ -126,6 +126,12 @@ h2 { font-size: 24px; margin-bottom: 25px; line-height: 1.4; }
     gap: 15px;
 }
 
+.option-buttons {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
 .option-btn {
     background-color: #fff;
     border: 2px solid;
@@ -137,6 +143,7 @@ h2 { font-size: 24px; margin-bottom: 25px; line-height: 1.4; }
     font-weight: 700;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    flex: 1;
 }
 
 .option-btn.couple {

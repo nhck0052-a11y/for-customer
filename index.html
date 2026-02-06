@@ -1,14 +1,42 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <div class="lang-switcher">
+        <button id="lang-kr" class="lang-btn active">KR</button>
+        <button id="lang-en" class="lang-btn">EN</button>
+    </div>
+
+    <div class="container">
+        <div id="start-screen" class="screen active">
+            <h1 data-lang-key="mainTitle"></h1>
+            <p data-lang-key="mainDescription"></p>
+            <div class="start-buttons">
+                <button id="start-couple-btn" class="btn-gradient" data-lang-key="coupleButton"></button>
+                <button id="start-friend-btn" class="btn-gradient" data-lang-key="friendButton"></button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+            <h2 id="question-title" data-lang-key="questionTitle"></h2>
+            <div id="options-container"></div>
+        </div>
+
+        <div id="end-screen" class="screen">
+            <h2 data-lang-key="endTitle"></h2>
+            <p data-lang-key="endDescription"></p>
+            <button id="restart-btn" class="btn-gradient" data-lang-key="restartButton"></button>
+        </div>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>

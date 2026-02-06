@@ -194,6 +194,11 @@ h2 { font-size: 24px; margin-bottom: 25px; line-height: 1.4; }
     box-shadow: 0 8px 15px rgba(111, 220, 140, 0.4);
 }
 
+#restart-quiz-btn { /* Style for the restart button on the results screen */
+    background: linear-gradient(45deg, #4CAF50, #81C784); /* Green gradient */
+    box-shadow: 0 8px 15px rgba(76, 175, 80, 0.4);
+}
+
 /* Contact Form Styles */
 #contact-form {
     width: 100%;

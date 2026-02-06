@@ -208,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const displayResult = () => {
+        console.log('displayResult called'); // Debugging
         let resultType = '';
         let resultTitleKey = '';
         let resultDescriptionKey = '';
@@ -225,12 +226,17 @@ document.addEventListener('DOMContentLoaded', () => {
             resultImageSrc = resultImages.laidBack;
         }
 
+        console.log('Result Type:', resultType); // Debugging
+        console.log('Result Image Source:', resultImageSrc); // Debugging
+        console.log('Result Image Element:', elements.resultImage); // Debugging
+
         elements.resultTitle.textContent = langData[currentLanguage][resultTitleKey];
         elements.resultDescription.textContent = langData[currentLanguage][resultDescriptionKey];
         elements.resultImage.src = resultImageSrc;
         elements.resultImage.alt = langData[currentLanguage][resultTitleKey]; // Set alt text for accessibility
 
         showScreen('results');
+        console.log('Results screen shown.'); // Debugging
     };
 
 

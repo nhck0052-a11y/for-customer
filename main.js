@@ -55,9 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
             messageSent: "메시지가 성공적으로 전송되었습니다!", // New for feedback
             messageError: "메시지 전송에 실패했습니다. 다시 시도해 주세요.", // New for feedback
             resultLaidBackTitle: "당신은 무던한 스타일!", // New
-            resultLaidBackDescription: "당신은 어떤 상황에서도 평온함을 유지하며, 유연하고 개방적인 태도를 가지고 있습니다. 쉽게 화내지 않고 주변 사람들을 편안하게 해주는 매력이 있어요.", // New
+            resultLaidBackDescription: "당신은 어떤 상황에서도 평온함을 유지하며, 유연하고 개방적인 태도를 가지고 있습니다. 쉽게 화내지 않고 주변 사람들을 편안하게 해주는 매력이 있어요. 당신의 무던함은 주변에 안정감을 가져다주며, 갈등을 원만하게 해결하는 능력이 뛰어납니다. 새로운 환경이나 예상치 못한 변화에도 잘 적응하며, 타인의 개성을 존중하는 넓은 마음을 가지고 있습니다.", // Expanded
             resultJealousTitle: "당신은 질투 많은 스타일!", // New
-            resultJealousDescription: "당신은 관계에 대한 애착이 강하고, 소중한 것을 지키려는 마음이 큽니다. 이는 때로 질투로 나타나기도 하지만, 그만큼 열정적이고 깊은 사랑을 가지고 있다는 증거이기도 합니다.", // New
+            resultJealousDescription: "당신은 관계에 대한 애착이 강하고, 소중한 것을 지키려는 마음이 큽니다. 이는 때로 질투로 나타나기도 하지만, 그만큼 열정적이고 깊은 사랑을 가지고 있다는 증거이기도 합니다. 당신의 질투는 애정의 깊이를 보여주는 한편, 관계를 더욱 단단하게 만들고 싶어하는 당신의 열정을 반영합니다. 때로는 강한 소유욕으로 비춰질 수도 있지만, 이는 당신이 사랑하는 사람에게 온전히 집중하고 싶어 하는 진심 어린 마음의 표현입니다.", // Expanded
+            resultAnalysisIntro: "당신의 밸런스 게임 선택을 분석한 결과, 다음과 같은 성향이 나타났습니다.", // New
+            resultAnalysisOutro: "이 결과는 당신의 성향을 이해하는 데 도움이 되기를 바랍니다. 다시 플레이하며 새로운 자신을 발견해보세요!", // New
             commentsButton: "댓글 보기/숨기기", // New
 
 
@@ -82,10 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
             messageSent: "Message sent successfully!", // New for feedback
             messageError: "Failed to send message. Please try again.", // New for feedback
             resultLaidBackTitle: "You are Laid-back Style!", // New
-            resultLaidBackDescription: "You maintain calmness in any situation, with a flexible and open attitude. You rarely get angry and have a charm that makes people around you comfortable.", // New
+            resultLaidBackDescription: "You maintain calmness in any situation, with a flexible and open attitude. You rarely get angry and have a charm that makes people around you comfortable. Your laid-back nature brings stability to those around you, and you have an excellent ability to resolve conflicts smoothly. You adapt well to new environments or unexpected changes and possess a broad mind that respects others' individuality.", // Expanded
             resultJealousTitle: "You are Jealous Style!", // New
-            resultJealousDescription: "You have strong attachments to relationships and a great desire to protect what is precious to you. This sometimes manifests as jealousy, but it is also a sign of your passionate and deep love.", // New
-            commentsButton: "Show/Hide Comments", // New
+                        resultJealousDescription: "You have strong attachments to relationships and a great desire to protect what is precious to you. This sometimes manifests as jealousy, but it is also a sign of your passionate and deep love. Your jealousy shows the depth of your affection, reflecting your passion to make relationships stronger. While it may sometimes appear as strong possessiveness, it is a sincere expression of your desire to fully focus on the people you love.", // Expanded
+                        resultAnalysisIntro: "Based on your balance game choices, the following personality traits emerged:", // New
+                        resultAnalysisOutro: "We hope this result helps you understand your personality better. Play again and discover new aspects of yourself!", // New
+                        commentsButton: "Show/Hide Comments", // New
 
 
         }
@@ -217,6 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
             resultTitleKey = 'resultLaidBackTitle';
             resultDescriptionKey = 'resultLaidBackDescription';
         }
+
+        // Construct the full analysis
+        let fullDescription = langData[currentLanguage].resultAnalysisIntro + '\n\n'; // Intro
+        fullDescription += langData[currentLanguage][resultDescriptionKey] + '\n\n'; // Specific description
+        fullDescription += langData[currentLanguage].resultAnalysisOutro; // Outro
+
+        elements.resultTitle.textContent = langData[currentLanguage][resultTitleKey];
+        elements.resultDescription.textContent = fullDescription;
 
         showScreen('results');
     };

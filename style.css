@@ -193,3 +193,66 @@ h2 { font-size: 24px; margin-bottom: 25px; line-height: 1.4; }
     background: linear-gradient(45deg, #6fdc8c, #a7f0ba);
     box-shadow: 0 8px 15px rgba(111, 220, 140, 0.4);
 }
+
+/* Contact Form Styles */
+#contact-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    text-align: left; /* Align labels and inputs to the left */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--text-color);
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(130, 177, 255, 0.2);
+    outline: none;
+    background-color: #fff;
+}
+
+#contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#contact-screen #back-to-start-btn {
+    margin-top: 20px;
+    background: linear-gradient(45deg, #6c757d, #adb5bd); /* Grey gradient for back button */
+    box-shadow: 0 8px 15px rgba(108, 117, 125, 0.4);
+}
+
+.form-status {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 16px;
+}
+

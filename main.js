@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
         start: document.getElementById('start-screen'),
         quiz: document.getElementById('quiz-screen'),
         end: document.getElementById('end-screen'),
+        contact: document.getElementById('contact-screen'), // Add contact screen
     };
 
     const buttons = {
@@ -11,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
         restart: document.getElementById('restart-btn'),
         langKR: document.getElementById('lang-kr'),
         langEN: document.getElementById('lang-en'),
+        contact: document.getElementById('contact-btn'), // Add contact button
+        backToStart: document.getElementById('back-to-start-btn'), // Add back to start button
     };
 
     const elements = {
@@ -34,6 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
             endTitle: "게임 종료!",
             endDescription: "재미있었나요? 다시 플레이하며 서로에 대해 더 깊이 알아보세요.",
             restartButton: "다시하기",
+            contactButton: "문의하기", // New
+            contactTitle: "문의하기", // New
+            contactDescription: "궁금한 점이나 제안할 사항이 있으시면 메시지를 남겨주세요.", // New
+            contactNameLabel: "이름", // New
+            contactEmailLabel: "이메일", // New
+            contactMessageLabel: "메시지", // New
+            contactSubmitButton: "보내기", // New
+            backToStartButton: "처음으로", // New
+            messageSent: "메시지가 성공적으로 전송되었습니다!", // New for feedback
+            messageError: "메시지 전송에 실패했습니다. 다시 시도해 주세요.", // New for feedback
         },
         en: {
             mainTitle: "The Ultimate Balance Game",
@@ -44,6 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
             endTitle: "Game Over!",
             endDescription: "Did you have fun? You can play again to get to know each other better.",
             restartButton: "Play Again",
+            contactButton: "Contact Us", // New
+            contactTitle: "Contact Us", // New
+            contactDescription: "If you have any questions or suggestions, please leave us a message.", // New
+            contactNameLabel: "Name", // New
+            contactEmailLabel: "Email", // New
+            contactMessageLabel: "Message", // New
+            contactSubmitButton: "Send", // New
+            backToStartButton: "Back to Start", // New
+            messageSent: "Message sent successfully!", // New for feedback
+            messageError: "Failed to send message. Please try again.", // New for feedback
         }
     };
 
@@ -161,6 +184,52 @@ document.addEventListener('DOMContentLoaded', () => {
     buttons.restart.addEventListener('click', () => showScreen('start'));
     buttons.langKR.addEventListener('click', () => setLanguage('kr'));
     buttons.langEN.addEventListener('click', () => setLanguage('en'));
+
+    buttons.contact.addEventListener('click', () => showScreen('contact')); // New
+    buttons.backToStart.addEventListener('click', () => showScreen('start')); // New
+
+    // Handle form submission for feedback
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formStatusMessage = document.createElement('p');
+            formStatusMessage.className = 'form-status';
+            contactForm.appendChild(formStatusMessage);
+
+            const formData = new FormData(contactForm);
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formStatusMessage.textContent = langData[currentLanguage].messageSent;
+                    formStatusMessage.style.color = 'green';
+                    contactForm.reset();
+                } else {
+                    const data = await response.json();
+                    if (data.errors) {
+                        formStatusMessage.textContent = data.errors.map(error => error.message).join(', ');
+                    } else {
+                        formStatusMessage.textContent = langData[currentLanguage].messageError;
+                    }
+                    formStatusMessage.style.color = 'red';
+                }
+            } catch (error) {
+                formStatusMessage.textContent = langData[currentLanguage].messageError;
+                formStatusMessage.style.color = 'red';
+            }
+            // Remove status message after a few seconds
+            setTimeout(() => {
+                formStatusMessage.remove();
+            }, 5000);
+        });
+    }
 
     // Initial setup
     setLanguage('kr');

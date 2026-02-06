@@ -13,9 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
         restart: document.getElementById('restart-btn'),
         langKR: document.getElementById('lang-kr'),
         langEN: document.getElementById('lang-en'),
-        contact: document.getElementById('contact-btn'), // Add contact button
         backToStart: document.getElementById('back-to-start-btn'), // Add back to start button
         restartQuiz: document.getElementById('restart-quiz-btn'), // Add restart quiz button
+        footerContact: document.getElementById('footer-contact-btn'), // New footer contact button
+        footerComments: document.getElementById('footer-comments-btn'), // New footer comments button
     };
 
     const elements = {
@@ -58,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
             resultLaidBackDescription: "당신은 어떤 상황에서도 평온함을 유지하며, 유연하고 개방적인 태도를 가지고 있습니다. 쉽게 화내지 않고 주변 사람들을 편안하게 해주는 매력이 있어요.", // New
             resultJealousTitle: "당신은 질투 많은 스타일!", // New
             resultJealousDescription: "당신은 관계에 대한 애착이 강하고, 소중한 것을 지키려는 마음이 큽니다. 이는 때로 질투로 나타나기도 하지만, 그만큼 열정적이고 깊은 사랑을 가지고 있다는 증거이기도 합니다.", // New
+            commentsButton: "댓글 보기/숨기기", // New
+
 
         },
         en: {
@@ -83,6 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
             resultLaidBackDescription: "You maintain calmness in any situation, with a flexible and open attitude. You rarely get angry and have a charm that makes people around you comfortable.", // New
             resultJealousTitle: "You are Jealous Style!", // New
             resultJealousDescription: "You have strong attachments to relationships and a great desire to protect what is precious to you. This sometimes manifests as jealousy, but it is also a sign of your passionate and deep love.", // New
+            commentsButton: "Show/Hide Comments", // New
+
 
         }
     };
@@ -235,9 +240,17 @@ document.addEventListener('DOMContentLoaded', () => {
     buttons.langKR.addEventListener('click', () => setLanguage('kr'));
     buttons.langEN.addEventListener('click', () => setLanguage('en'));
 
-    buttons.contact.addEventListener('click', () => showScreen('contact')); // New
+
     buttons.backToStart.addEventListener('click', () => showScreen('start')); // New
     buttons.restartQuiz.addEventListener('click', () => showScreen('start')); // New
+    buttons.footerContact.addEventListener('click', () => showScreen('contact')); // New footer contact button
+    buttons.footerComments.addEventListener('click', () => { // New footer comments button
+        const disqusThread = document.getElementById('disqus_thread');
+        if (disqusThread) {
+            disqusThread.style.display = disqusThread.style.display === 'none' ? 'block' : 'none';
+        }
+    });
+
 
     // Handle form submission for feedback
     const contactForm = document.getElementById('contact-form');
